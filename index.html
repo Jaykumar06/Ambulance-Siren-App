@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Alert & Navigation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1>🚨 Emergency Alert System</h1>
+            <p>Ambulance Proximity Detection & Navigation</p>
+        </div>
+
+        <div class="mode-selector">
+            <button class="mode-btn driver active" onclick="switchMode('driver')">
+                🚑 Driver Mode
+            </button>
+            <button class="mode-btn local" onclick="switchMode('local')">
+                🏠 Local Mode
+            </button>
+        </div>
+
+        <!-- Driver Mode Section -->
+        <div id="driver-mode" class="mode-section active">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #ff4757;">🚑 Ambulance Driver Panel</h2>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <button class="control-btn emergency-btn" onclick="toggleEmergency()">
+                        <span id="emergency-text">START EMERGENCY</span>
+                    </button>
+                </div>
+                <div class="control-group">
+                    <button class="control-btn siren-btn" onclick="toggleSiren()">
+                        <span id="siren-text">START SIREN</span>
+                    </button>
+                </div>
+                <div class="control-group">
+                    <button class="control-btn location-btn" onclick="shareLocation()">
+                        SHARE LOCATION
+                    </button>
+                </div>
+            </div>
+
+            <div class="status-panel" id="driver-status">
+                <div class="siren-status">
+                    <div class="siren-indicator" id="siren-indicator"></div>
+                    <span>Siren Status: <span id="siren-status-text">OFF</span></span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <strong>Location:</strong> <span id="driver-location">Getting location...</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <strong>Emergency Status:</strong> <span id="emergency-status">INACTIVE</span>
+                </div>
+            </div>
+
+            <div class="map-container" id="driver-map">
+                <div>
+                    <h3>🗺️ Navigation Map</h3>
+                    <p>GPS location will be displayed here</p>
+                    <p>Real-time route to destination</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Local Mode Section -->
+        <div id="local-mode" class="mode-section">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #4ecdc4;">🏠 Local Resident Panel</h2>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <button class="control-btn location-btn" onclick="enableProximityAlert()">
+                        ENABLE ALERTS
+                    </button>
+                </div>
+                <div class="control-group">
+                    <button class="control-btn" style="background: linear-gradient(135deg, #a55eea, #8b5cf6); color: white;" onclick="openNavigation()">
+                        OPEN NAVIGATION
+                    </button>
+                </div>
+            </div>
+
+            <div class="status-panel" id="local-status">
+                <div>
+                    <strong>Alert Status:</strong> <span id="alert-status">INACTIVE</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <strong>Your Location:</strong> <span id="local-location">Getting location...</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <strong>Nearest Ambulance:</strong> <span id="ambulance-distance">No ambulances detected</span>
+                </div>
+            </div>
+
+            <div class="distance-display" id="distance-display">
+                <div style="color: #4ecdc4;">No Emergency Vehicles Nearby</div>
+            </div>
+
+            <div class="info-panel">
+                <h3>📱 What to do when ambulance approaches:</h3>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Pull over to the right side of the road</li>
+                    <li>Create a clear path for the ambulance</li>
+                    <li>Remain calm and follow traffic rules</li>
+                    <li>Wait for the ambulance to pass completely</li>
+                </ul>
+            </div>
+
+            <div class="map-container" id="local-map">
+                <div>
+                    <h3>🗺️ Local Navigation</h3>
+                    <p>Your location and nearby ambulances</p>
+                    <p>Safe route suggestions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Proximity Alert -->
+    <div class="proximity-alert" id="proximity-alert">
+        <h3>🚨 AMBULANCE APPROACHING!</h3>
+        <p>Distance: <span id="alert-distance">Unknown</span></p>
+        <p>Please clear the road immediately!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
