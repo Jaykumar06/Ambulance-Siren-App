@@ -14,10 +14,7 @@ const demoAmbulances = [
     { lat: 28.4605, lng: 77.0276, id: 'amb2' }
 ];
 
-/**
- * Switch between driver and local modes
- * @param {string} mode - 'driver' or 'local'
- */
+
 function switchMode(mode) {
     currentMode = mode;
     
@@ -574,4 +571,5 @@ window.addEventListener('beforeunload', function() {
     if (proximityInterval) {
         clearInterval(proximityInterval);
     }
+
 });
