@@ -14,7 +14,6 @@ const demoAmbulances = [
     { lat: 28.4605, lng: 77.0276, id: 'amb2' }
 ];
 
-
 function switchMode(mode) {
     currentMode = mode;
     
@@ -573,3 +572,4 @@ window.addEventListener('beforeunload', function() {
     }
 
 });
+
